@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+/* Jetons de couleur au format shadcn/ui (thème clair, puis sombre selon le réglage de l'iPhone) */
+:root {
+  --radius: 0.9rem;
+  --background: oklch(0.97 0.003 264);
+  --foreground: oklch(0.18 0.01 264);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 264);
+  --primary: oklch(0.52 0.18 256);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.95 0.006 264);
+  --secondary-foreground: oklch(0.25 0.01 264);
+  --muted: oklch(0.95 0.006 264);
+  --muted-foreground: oklch(0.52 0.012 264);
+  --accent: oklch(0.94 0.03 256);
+  --accent-foreground: oklch(0.38 0.15 256);
+  --destructive: oklch(0.58 0.2 27);
+  --warning: oklch(0.6 0.15 55);
+  --border: oklch(0.91 0.006 264);
+  --input: oklch(0.91 0.006 264);
+  --ring: oklch(0.52 0.18 256);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: oklch(0.13 0.004 264);
+    --foreground: oklch(0.97 0.003 264);
+    --card: oklch(0.2 0.006 264);
+    --card-foreground: oklch(0.97 0.003 264);
+    --primary: oklch(0.68 0.15 256);
+    --primary-foreground: oklch(0.15 0.02 264);
+    --secondary: oklch(0.26 0.008 264);
+    --secondary-foreground: oklch(0.95 0 0);
+    --muted: oklch(0.26 0.008 264);
+    --muted-foreground: oklch(0.7 0.012 264);
+    --accent: oklch(0.3 0.06 256);
+    --accent-foreground: oklch(0.85 0.08 256);
+    --destructive: oklch(0.68 0.18 27);
+    --warning: oklch(0.75 0.13 65);
+    --border: oklch(0.3 0.008 264);
+    --input: oklch(0.32 0.008 264);
+    --ring: oklch(0.68 0.15 256);
+  }
+}
+
+@theme inline {
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    @apply bg-background text-foreground antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+  button, a { -webkit-touch-callout: none; }
+}
+
+/* Marges de sécurité de l'iPhone (encoche, barre d'accueil) */
+.pt-safe { padding-top: max(env(safe-area-inset-top), 0.75rem); }
+.pb-safe { padding-bottom: max(env(safe-area-inset-bottom), 0.5rem); }
